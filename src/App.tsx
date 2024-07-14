@@ -1,16 +1,12 @@
-import ListGroup from "./components/ListGroup";
+import React from 'react';
+import { Row, Col, Container, Navbar, Nav } from 'react-bootstrap';
 
-function App() {
-  const [alertVisible, setAlertVisible] = useState(false);
-
+const App: React.FC = () => {
   return (
-    <div>
-      {alertVisible && <Alert onClose={() =>setAlertVisible(false)}>My Alert</Alert>}
-      <Button color="secondary" onClick={() => setAlertVisible(true)}>My poop</Button>
+    <>
       
-    </div>
+    </>
   );
-
 }
 
 export default App;
