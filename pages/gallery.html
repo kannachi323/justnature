@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Just Nature - Gallery</title>
+    <script src="/index.js"></script>
+  </head>
+  <body>
+    <div id="layout-container"></div>
+
+    <div class="btn-container">
+      <button
+        class="gallery-btn container"
+        onclick="toggleImageContainer('ic1')"
+      >
+        Orchids
+      </button>
+    </div>
+
+    <div class="img-container" id="ic1" style="display: none">
+      <img class="img-item" src="/images/IMG_4777.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_5247.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_5789.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_5790.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_6052.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_6086.jpg" alt=s"some orchids" />
+    </div>
+
+    <div class="btn-container">
+      <button
+        class="gallery-btn container"
+        onclick="toggleImageContainer('ic2')"
+      >
+        Landscaping
+      </button>
+    </div>
+
+    <div class="img-container" id="ic2" style="display: none">
+      <img class="img-item" src="/images/IMG_4777.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_5247.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_5789.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_5790.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_6052.jpg" alt="some orchids" />
+      <img class="img-item" src="/images/IMG_6086.jpg" alt=s"some orchids" />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", loadLayout);
+    </script>
+  </body>
+</html>
