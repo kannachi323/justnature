@@ -9,7 +9,7 @@ h1 {
 
 body {
   min-height: 100vh;
-  background-color: rgb(220, 219, 215);
+  background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -20,8 +20,7 @@ body {
 }
 
 nav {
-  background-color: rgb(235, 222, 224);
-  padding: 5px;
+  background-color: #e9f4fb;
   max-width: 90%;
   margin: auto;
   border-radius: 10px;
@@ -29,6 +28,7 @@ nav {
 }
 
 .navbar {
+  padding: 5px;
   display: flex;
   justify-content: space-around;
   list-style: none;
@@ -39,7 +39,7 @@ nav {
   color: black;
   text-decoration: none;
   display: flex;
-  padding: 10px 50px;
+  padding: 5px 30px;
 }
 
 .navbar li:hover {
@@ -56,6 +56,7 @@ nav {
   overflow: auto;
   background-color: rgb(235, 222, 224);
   border: 2px solid black;
+  max-width: 80wh;
 }
 
 .img-item {
@@ -66,21 +67,21 @@ nav {
 }
 
 .btn-container {
-  margin: 50px 250px 50px 250px;
+  margin: 50px;
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  justify-content: space-around;
+  align-items: center;
 }
 
 .gallery-btn {
-  background-color: #3498db; /* Blue background */
-  color: white; /* White text */
+  background-color: #3498db;
+  color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 16px;
   border: 2px solid black;
   border-radius: 10px;
+  min-width: 200px;
 }
 
 .gallery-btn:hover {
@@ -91,6 +92,7 @@ nav {
 
 /* Contact */
 .cards-container {
+  
   display: flex;
   overflow-x: auto; /* Enable horizontal scrolling */
   width: 100%;
@@ -100,11 +102,11 @@ nav {
 }
 
 .card {
+  background-color: #e9f4fb;
   flex: 0 0 23%;
   box-sizing: border-box;
   margin: 10px;
   padding: 20px;
-  background-color: #fff;
   border: 2px solid black;
   border-radius: 10px;
   text-align: center;
@@ -134,7 +136,9 @@ nav {
   margin-bottom: 15px;
 }
 
-.book-btn, .whatsapp-btn, #hours-btn {
+.book-btn,
+.whatsapp-btn,
+#hours-btn {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
@@ -144,11 +148,12 @@ nav {
   font-weight: bold;
 }
 
-.book-btn:hover, .whatsapp-btn:hover, #hours-btn:hover {
+.book-btn:hover,
+.whatsapp-btn:hover,
+#hours-btn:hover {
   background-color: rgb(148, 148, 148);
   transition: background-color 0.5s ease, transform 0.5s ease;
 }
-
 
 .book-btn {
   background-color: #ea81e2;
@@ -178,9 +183,4 @@ nav {
   color: #555;
   display: flex;
   flex-direction: column;
-  
 }
-
-
-
-

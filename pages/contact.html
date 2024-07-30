@@ -9,17 +9,42 @@
   </head>
   <body>
     <div id="layout-container"></div>
-  
+
     <div class="cards-container">
       <div class="card">
         <img src="/images/orchid.jpg" alt="Salon Image" class="card-image" />
+
         <div class="card-buttons">
-          <button class="book-btn">Book Appointment</button>
-          <button class="whatsapp-btn">Chat on LINE</button>
-          <button id="hours-btn" onclick="toggleContainer('hours', 'block')">Hours of Operation</button>
+          <button class="book-btn" onclick="toggleContainer('form', 'block')">
+            Schedule an Appointment
+          </button>
+          <div class="card-details" id="form" style="display: none">
+            <iframe
+              class="card-details"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdgc_hEFrRXkOyQR_BBGJxyUPqQUhDXASdue29OvxokZqNarQ/viewform?embedded=true"
+              width="640"
+              height="1708"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              >Loading…</iframe
+            >
+          </div>
         </div>
-        
-        <div class="card-details" id="hours">
+
+        <div class="card-deatils" id="form" style="display: none">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdgc_hEFrRXkOyQR_BBGJxyUPqQUhDXASdue29OvxokZqNarQ/viewform?embedded=true"
+            width="640"
+            height="1843"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            >Loading…</iframe
+          >
+        </div>
+
+        <div class="card-details">
           <h1>Hours of Operation</h1>
           <p>Sunday Closed</p>
           <p>Monday 9am - 5pm</p>
