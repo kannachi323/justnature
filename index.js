@@ -1,3 +1,7 @@
+// index.js
+
+import { loadImagesFromFolder } from './storage.js'; // Correct import
+
 async function loadLayout() {
     try {
         const response = await fetch("../layout.html");
@@ -13,7 +17,7 @@ async function loadLayout() {
     }
 }
 
-function toggleContainer(id, display) {
+export function toggleContainer(id, display) {
     var item = document.getElementById(id);
     if (item.style.display === "none") {
         item.style.display = display;
@@ -23,5 +27,8 @@ function toggleContainer(id, display) {
     }
 }
 
-
-
+document.addEventListener("DOMContentLoaded", () => {
+    loadLayout();
+    loadImagesFromFolder("orchids/", "ic1");
+    loadImagesFromFolder("landscaping/", "ic2");
+});
