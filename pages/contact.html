@@ -4,19 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Just Nature - Contact</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <script src="/index.js"></script>
   </head>
   <body>
     <div id="layout-container"></div>
+  
+    <div class="cards-container">
+      <div class="card">
+        <img src="/images/orchid.jpg" alt="Salon Image" class="card-image" />
+        <div class="card-buttons">
+          <button class="book-btn">Book Appointment</button>
+          <button class="whatsapp-btn">Chat on LINE</button>
+          <button id="hours-btn" onclick="toggleContainer('hours', 'block')">Hours of Operation</button>
+        </div>
+        
+        <div class="card-details" id="hours">
+          <h1>Hours of Operation</h1>
+          <p>Sunday Closed</p>
+          <p>Monday 9am - 5pm</p>
+          <p>Tuesday 9am - 5pm</p>
+          <p>Wednesday 9am - 5pm</p>
+          <p>Thursday 9am - 5pm</p>
+          <p>Friday 9am - 5pm</p>
+          <p>Saturday 9am - 5pm</p>
+        </div>
 
-    <h1>
-      melissa is a nigga
-    </h1>
-   
+        <div class="card-details">
+          <h1>Contact Us</h1>
+          <p>626-446-6788</p>
+          <p>justnatureusa@gmail.com</p>
+          <p></p>
+        </div>
+      </div>
+    </div>
+
     <script>
       document.addEventListener("DOMContentLoaded", loadLayout);
-      
     </script>
   </body>
 </html>
