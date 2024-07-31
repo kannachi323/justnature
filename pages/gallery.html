@@ -18,9 +18,9 @@
       </button>
     </div>
 
-    <div class="img-container" id="ic1" style="display: flex"></div>
+    <div class="img-container" id="ic1" style="display: none"></div>
 
-    <div class="img-container" id="ic2" style="display: flex"></div>
+    <div class="img-container" id="ic2" style="display: none"></div>
 
     <div class="btn-container">
       <button
@@ -30,16 +30,10 @@
         Landscaping
       </button>
     </div>
-
-    <div class="img-container" id="ic3" style="display: flex">
-      <img class="img-item" src="/images/IMG_4777.jpg" alt="some orchids" />
-      <img class="img-item" src="/images/IMG_5247.jpg" alt="some orchids" />
-      <img class="img-item" src="/images/IMG_5789.jpg" alt="some orchids" />
-      <img class="img-item" src="/images/IMG_5790.jpg" alt="some orchids" />
-      <img class="img-item" src="/images/IMG_6052.jpg" alt="some orchids" />
-      <img class="img-item" src="/images/IMG_6086.jpg" alt="some orchids" />
-    </div>
-
-    <script src="/index.js" type="module"></script>
+    
+    <script type="module">
+      import { toggleContainer } from '/index.js';
+      window.toggleContainer = toggleContainer;
+    </script>
   </body>
 </html>

@@ -1,20 +1,22 @@
 // index.js
 
-import { loadImagesFromFolder } from './storage.js'; // Correct import
+import { loadImagesFromFolder } from './firebase/storage.js';
 
-async function loadLayout() {
-    try {
-        const response = await fetch("../layout.html");
-        if (!response.ok) {
-            throw new Error('HTTP error!');
-        }
-        const htmlContent = await response.text();
-        console.log(htmlContent);
-        document.getElementById('layout-container').innerHTML = htmlContent;
-    } 
-    catch (error) {
-        console.error("Error fetching layout.html:", error);
-    }
+export default function loadLayout() {
+	fetch("/layout.html")
+		.then(response => {
+			if (!response.ok) {
+					throw new Error('HTTP error!');
+			}
+			return response.text();
+		})
+		.then(htmlContent => {
+			console.log(htmlContent);
+			document.getElementById('layout-container').innerHTML = htmlContent;
+		})
+		.catch(error => {
+			console.error("Error fetching layout.html:", error);
+		});
 }
 
 export function toggleContainer(id, display) {
@@ -27,8 +29,25 @@ export function toggleContainer(id, display) {
     }
 }
 
+// Expose functions to the global scope
+
 document.addEventListener("DOMContentLoaded", () => {
-    loadLayout();
-    loadImagesFromFolder("orchids/", "ic1");
+	//Common Functions
+  	loadLayout();
+  
+	if (window.location.pathname === '/pages/gallery.html') {
+	loadImagesFromFolder("orchids/", "ic1");
     loadImagesFromFolder("landscaping/", "ic2");
+  }
+
+	else if (window.location.pathname === 'pages/contact.html') {
+		console.log('template');
+	}
+
+	else if (window.location.pathname === 'pages/auth.html') {
+		console.log('template');
+	}
+
 });
+
+
