@@ -1,13 +1,18 @@
 import { app } from './firebaseConfig.js';
 import {
-  getAuth
+  getAuth,
+  createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
-
 
 const auth = getAuth(app);
 
-export function registerUser(email, password) {
-  auth.createUserWithEmailAndPassword(email, password)
+export function registerUser(event) {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  console.log(email);
+  const password = document.getElementById('password').value;
+
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log('User registered:', user);
@@ -16,6 +21,7 @@ export function registerUser(email, password) {
       console.error('Error registering user:', error.message);
     });
 }
+
 
 function signUpWithEmailPassword() {
   var email = "test@example.com";

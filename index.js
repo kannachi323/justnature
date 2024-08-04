@@ -1,6 +1,7 @@
 // index.js
 
 import { loadImagesFromFolder } from './firebase/storage.js';
+import { registerUser } from './firebase/userAuth.js';
 
 export default function loadLayout() {
 	fetch("/layout.html")
@@ -34,18 +35,20 @@ export function toggleContainer(id, display) {
 document.addEventListener("DOMContentLoaded", () => {
 	//Common Functions
   	loadLayout();
+
+	document.getElementById('registerForm').addEventListener('submit', registerUser);
+
   
 	if (window.location.pathname === '/pages/gallery.html') {
 	loadImagesFromFolder("orchids/", "ic1");
     loadImagesFromFolder("landscaping/", "ic2");
-  }
+  	}
 
 	else if (window.location.pathname === 'pages/contact.html') {
 		console.log('template');
 	}
 
-	else if (window.location.pathname === 'pages/auth.html') {
-		console.log('template');
+	else if (window.location.pathname === 'pages/index.html') {
 	}
 
 });
