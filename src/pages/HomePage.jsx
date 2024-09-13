@@ -1,6 +1,5 @@
 import React from 'react';
-import Logo from '../components/Logo';
-import { NavBar } from '../components/NavBar';
+import Footer from '../components/Footer';
 import ContentCard from '../components/ContentCard';
 import {
   bg1,
@@ -14,96 +13,91 @@ import FadeSlideInSection from '../components/FadeSlideInSection';
 export default function HomePage() {
   return (
     <>
-
-      <div className="h-[175vh] w-screen flex flex-col items-center justify-start text-gray-100 text-opacity-60 font-roboto">
-        <FadeSlideInSection className="self-start text-6xl relative left-[10vw] text-opacity-100 text-white">
-          <b>Elegant.</b>
-        </FadeSlideInSection>
+      <FadeSlideInSection>
+        <div className="h-[175vh] w-screen flex flex-col items-center justify-start text-opacity-60 font-roboto bg-[#f5f5f3]">
+      
+          <b className="self-start text-6xl relative left-[10vw] text-opacity-100 text-[#ccac91]  mt-7">Elegant.</b>
+        
           <div className="flex flex-row items-center justify-evenly">
             <img src={IMG_4777} alt="some orchids" className="object-cover h-[50vh] w-[25vw] m-10 rounded-3xl shadow-slate-600 shadow-2xl" />
             <img src={IMG_6856} alt="some orchids" className="object-cover h-[50vh] w-[25vw] m-10 rounded-3xl shadow-slate-600 shadow-2xl" />
             <img src={IMG_6906} alt="some orchids" className="object-cover h-[50vh] w-[25vw] m-10 rounded-3xl shadow-slate-600 shadow-2xl" />
           
+          </div>
+        
+            <b className="self-end text-6xl relative right-[10vw] m-10 text-opacity-100 text-[#ccac91]">Beautiful.</b>
+
+
+        
+            <img src={bg1} alt="some orchids" className="object-cover h-[85vh] w-[90vw] rounded-3xl shadow-slate-600 shadow-2xl" />
+        
         </div>
-        <FadeSlideInSection className="self-end text-6xl relative right-[10vw] m-10 text-opacity-100 text-white">
-          <b>Beautiful.</b>
-        </FadeSlideInSection>
-
-        <FadeSlideInSection className="self-center text-6xl m-5">
-          <img src={bg1} alt="some orchids" className="object-cover h-[85vh] w-[90vw] rounded-3xl shadow-slate-600 shadow-2xl" />
-        </FadeSlideInSection>
-      </div>
-
-
-      <div className="h-[175h] w-screen flex flex-col items-center justify-start text-gray-100 text-opacity-60 font-roboto bg-[#131d38]">
+      </FadeSlideInSection>
+      
+      <FadeSlideInSection>
+        <div className="h-[175h] w-screen flex flex-col items-center justify-start text-gray-100 text-opacity-60 font-roboto bg-[#e6e6e2]">
    
 
-        <FadeSlideInSection className="self-start text-6xl relative left-[10vw] m-10 text-opacity-100 text-white">
-          <b>Vibrant.</b>
-        </FadeSlideInSection>
-        <ContentCard
-          renderSize="sm"
-          renderArgs={{
-            text: `Our orchids come from top growers in Taiwan, known for their exceptional cultivation. Carefully selected from the country’s 
-            lush landscapes, our orchids are vibrant and beautiful, making them a stunning addition to any setting and occasion.`,
-            src: bg1,
-            orientation: "IT",
-            textSize: "text-2xl",
-          }}
-          direction="row"
-        />
+          <b className="self-start text-6xl relative left-[10vw] m-10 text-opacity-100 text-[#ccac91] ">Vibrant.</b>
 
-      
-        <FadeSlideInSection className="self-end text-6xl relative right-[10vw] m-10 text-opacity-100 text-white">
-         <b>Premium.</b>
-        </FadeSlideInSection>
-        <ContentCard
-          renderSize="sm"
-          renderArgs={{
-            text: `For over 15 years, we’ve delivered exquisite orchids that transform various spaces and create memorable atmospheres. 
-                  Our reputation for quality comes from crafting custom arrangements that perfectly match each client’s vision.`,
-            src: bg1,
-            orientation: "TI",
-            textSize: "text-2xl"
-          }}
-          direction="row"
-        />
-      </div>
+          <ContentCard
+            renderSize="sm"
+            renderArgs={{
+              text: `We're committed to delivering only the finest quality orchids, ensuring beauty and elegance in every arrangement.`,
+              src: bg1,
+              orientation: "IT",
+              textSize: "text-2xl",
+            }}
+            direction="row"
+          />
 
-      <div className="h-[175vh] w-screen flex flex-col items-center justify-start text-gray-100 text-opacity-60 font-roboto bg-slate-900">
-        <FadeSlideInSection className="self-center text-6xl m-10 text-opacity-100 text-white">
-         <b>It's not just nature...</b>
-        </FadeSlideInSection>
-        <ContentCard
-          renderSize="sm"
-          renderArgs={{
-            text: `Our orchids come from top growers in Taiwan, known for their exceptional cultivation. Carefully selected from the country’s 
-            lush landscapes, our orchids are vibrant and beautiful, making them a stunning addition to any setting and occasion.`,
-            src: bg1,
-            orientation: "IT",
-            textSize: "text-2xl",
-          }}
-          direction="row"
-        />
-
-      
         
-        <FadeSlideInSection className="text-6xl m-10 text-opacity-100 text-white">
-          <b>it's <i className="text-[#9fdb4b]">Just Nature</i></b>
-        </FadeSlideInSection>
-        <ContentCard
-          renderSize="sm"
-          renderArgs={{
-            text: `For over 15 years, we’ve delivered exquisite orchids that transform various spaces and create memorable atmospheres. 
-                  Our reputation for quality comes from crafting custom arrangements that perfectly match each client’s vision.`,
-            src: bg1,
-            orientation: "TI",
-            textSize: "text-2xl"
-          }}
-          direction="row"
-        />
 
-      </div>
+          <b className="self-end text-6xl relative right-[10vw] m-10 text-opacity-100 text-text-[#ccac91]">Premium.</b>
+
+          <ContentCard
+            renderSize="sm"
+            renderArgs={{
+              text: `Our reputation for quality comes from 20 years of crafting custom orchid arrangements that perfectly match each client’s vision.`,
+              src: bg1,
+              orientation: "TI",
+              textSize: "text-2xl"
+            }}
+            direction="row"
+          />
+        </div>
+
+
+      </FadeSlideInSection>
+      
+      <FadeSlideInSection>
+        <div className="h-[100vh] w-screen flex flex-col items-center justify-start text-gray-100 text-opacity-60 font-roboto bg-[#f5f5f3]">
+          
+          <b className="self-center text-6xl m-10 text-opacity-100 text-[#ccac91]">It's not just nature...</b>
+        
+          <ContentCard
+            renderSize="sm"
+            renderArgs={{
+              text: `Carefully selected from Taiwan's lush landscapes, our orchids are vibrant and beautiful, making them a stunning addition to any setting and occasion.`,
+              src: bg1,
+              orientation: "IT",
+              textSize: "text-2xl",
+            }}
+            direction="row"
+          />
+
+        
+          
+        
+          <b className="text-6xl m-10 text-opacity-100 text-[#ccac91]">it's <i className="text-[#9fdb4b]">Just Nature</i></b>
+
+        </div>
+
+        
+        <Footer />
+
+      </FadeSlideInSection>
+      
       
       
 

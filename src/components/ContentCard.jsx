@@ -31,7 +31,7 @@ export default function ContentCard({ renderSize, renderArgs, direction}) {
 export function renderMediumCard(renderArgs) {
     const ra = renderArgs;
     const imageClass = "object-contain w-[60%] h-[100%] rounded-3xl shadow-slate-600 shadow-2xl";
-    const textClass = "text-6xl flex-grow text-gray-300 ";
+    const textClass = "text-6xl flex-grow text-[#ccac90] ";
 
     switch (ra.orientation) {
         case 'III':
@@ -58,7 +58,7 @@ export function renderMediumCard(renderArgs) {
 export function renderSmallCard(renderArgs) {
     const ra = renderArgs;
     const imageClass = "object-contain h-[100%] rounded-3xl m-10 shadow-slate-600 shadow-2xl";
-    const textClass = `${ra.textSize} text-center leading-loose text-gray-300 `;
+    const textClass = `${ra.textSize} text-center leading-loose text-[#ccac90] `;
 
     switch (ra.orientation) {
         case 'TI':
