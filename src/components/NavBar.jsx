@@ -11,9 +11,8 @@ export function NavBar() {
     const pages = [
         { name: "Home", link: "/" },
         { name: "Gallery", link: "/gallery" },
-        { name: "Prices", link: "/prices"},
-        { name: "Shop", link: "/shop"},
         { name: "Contact", link: "/contact" },
+        { name: "Shop", link: "/shop"},
     ];
 
 

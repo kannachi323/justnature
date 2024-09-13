@@ -5,6 +5,7 @@ import IMG_6856 from './IMG_6856.jpg';
 import IMG_6906 from './IMG_6906.jpg';
 import logo1 from './logo1.png';
 import logo2 from './logo2.png';
+import orchids from './orchids.jpg';
 
 export {
     bg1,
@@ -14,4 +15,5 @@ export {
     IMG_6906,
     logo1, 
     logo2,
+    orchids,
 }

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'fade-slide-in': 'fadeSlideIn 2s ease-out', // Adjust duration and easing as needed
+        'fade-slide-in': 'fadeSlideIn 1.5s ease-out', // Adjust duration and easing as needed
       },
       keyframes: {
         fadeSlideIn: {

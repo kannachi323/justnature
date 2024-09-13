@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout'; // Import the Layout component
-import { ContactPage, GalleryPage, HomePage, ServicesPage, ShopPage } from './pages';
+import { ContactPage, GalleryPage, HomePage, ShopPage } from './pages';
 
 const Router = createBrowserRouter([
   {
@@ -18,10 +18,6 @@ const Router = createBrowserRouter([
       {
         path: "contact",
         element: <ContactPage />,
-      },
-      {
-        path: "prices",
-        element: <ServicesPage />,
       },
       {
         path: "shop",
