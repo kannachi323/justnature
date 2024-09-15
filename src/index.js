@@ -5,11 +5,18 @@ import { RouterProvider } from 'react-router-dom';
 import Router from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Auth0Provider } from '@auth0/auth0-react';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Auth0Provider
+    domain="dev-velx0rij68nzpyod.us.auth0.com"
+    clientId="2DKslDL6YuLndABd67EEcAOnUdens6eV"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}>
     <RouterProvider router={Router} />
-  </React.StrictMode>
+  </Auth0Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
