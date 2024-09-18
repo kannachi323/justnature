@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdLogin } from "react-icons/md";
 import { HiOutlinePencilAlt } from "react-icons/hi";
+import { CgProfile } from "react-icons/cg";
 import { AuthContext } from '../contexts/AuthContext';
+
+
 
 export function setActivePageCookie(index) {
     document.cookie = `active=${index}; expires=${new Date(Date.now() + 600000).toUTCString()}`;
@@ -40,8 +43,9 @@ export function NavBar() {
                     transition duration-300 ease-in-out"
                     onClick={() => navigate('/user')}
                 >
+                    
+                    <CgProfile className="ml-1 text-xl"/>
                     <b>Profile</b>
-                    <HiOutlinePencilAlt className="ml-1 text-xl"/>
                 </button>  
             ) : (
                 <>

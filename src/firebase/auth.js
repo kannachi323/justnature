@@ -3,6 +3,7 @@ import { getAuth, setPersistence, browserLocalPersistence, browserSessionPersist
   createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
 } from "firebase/auth";
 
+
 export function registerUser(email, password) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

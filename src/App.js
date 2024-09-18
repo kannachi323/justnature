@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { NavBar } from './components/NavBar'; 
 import { LogoNoText } from './components/Logos';
 
-function Layout() {
+function App() {
   return (
       <>
           {/* Container for Logo and NavBar */}
@@ -26,7 +26,7 @@ function Layout() {
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // Use the Layout component
+    element: <App/>, // Use the Layout component
     children: [
       {
         index: true, // Default route for '/'

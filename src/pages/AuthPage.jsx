@@ -4,13 +4,14 @@ import { LogoNoText } from "../components/Logos";
 import FadeSlideInSection from "../components/FadeSlideInSection";
 import { SuccessPopup, ErrorPopup } from "../components/Popups";
 import { AuthContext } from '../contexts/AuthContext';
+import { loginUser, registerUser } from '../firebase/auth';
 
 export function LoginPage() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
 
   const navigate = useNavigate();
-  const { loginUser, setIsAuthenticated } = useContext(AuthContext)
+  const { setIsAuthenticated } = useContext(AuthContext)
 
   async function handleLoginAuth(event) {
     event.preventDefault();
@@ -19,7 +20,7 @@ export function LoginPage() {
     const password = document.getElementById("user-password").value;
     const remember = document.getElementById("remember-me").checked;
 
-    
+    console.log('hello');
 
     try {
       await loginUser(email, password, remember);
