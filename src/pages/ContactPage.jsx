@@ -13,21 +13,6 @@ export default function ContactPage() {
             <FadeSlideInSection>
                 <LogoNoText args="h-[30vh]" /> 
             </FadeSlideInSection>
-
-            <FadeSlideInSection>
-                <div className="flex flex-col items-center justify-start mb-6 p-5 w-[60vw] bg-[#f5f5f3] shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md font-[sans-serif]">
-                  <h1 className="text-[#ccab8f] text-2xl font-extrabold text-center">Schedule an Appointment</h1>
-                        <p className="text-sm text-[#8c7a66] mt-2 text-center">
-                            Want to visit our store?       
-                            <a className="underline inline-flex items-center ml-1" href="https://forms.gle/tPKxm1GwSWEL2Z887" target="_blank" rel="noopener noreferrer">
-                              Click here to access our appointment form and schedule a visit.
-                              <FaExternalLinkAlt className="text-[#ccab8f] text-center ml-1">Link</FaExternalLinkAlt>
-                            </a>
-                        </p>
-                        
-                    
-                </div>
-            </FadeSlideInSection>
             
             <FadeSlideInSection>
                 <div className="mb-6 grid sm:grid-cols-2 items-start gap-14 p-8 mx-auto max-w-[60vw] bg-[#f5f5f3] shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md font-[sans-serif]">
@@ -65,6 +50,21 @@ export default function ContactPage() {
                         <button type='button'
                             className="text-[#f5f5f3] bg-[#ccab8f] hover:bg-[#b3947b] rounded-md text-sm px-4 py-3 w-full !mt-6">Send</button>
                     </form>
+                </div>
+            </FadeSlideInSection>
+
+            <FadeSlideInSection>
+                <div className="flex flex-col items-center justify-start mb-6 p-5 w-[60vw] bg-[#f5f5f3] shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md font-[sans-serif]">
+                  <h1 className="text-[#ccab8f] text-2xl font-extrabold text-center">Schedule an Appointment</h1>
+                        <p className="text-sm text-[#8c7a66] mt-2 text-center">
+                            Want to visit our store?       
+                            <a className="underline inline-flex items-center ml-1" href="https://forms.gle/tPKxm1GwSWEL2Z887" target="_blank" rel="noopener noreferrer">
+                              Click here to access our appointment form and schedule a visit.
+                              <FaExternalLinkAlt className="text-[#ccab8f] text-center ml-1">Link</FaExternalLinkAlt>
+                            </a>
+                        </p>
+                        
+                    
                 </div>
             </FadeSlideInSection>
             

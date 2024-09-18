@@ -1,31 +1,48 @@
 import { auth } from "./setup";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
+import { getAuth, setPersistence, browserLocalPersistence, browserSessionPersistence,
+  createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
+} from "firebase/auth";
 
 export function registerUser(email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
+  return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed up 
+      // Signed up
       const user = userCredential.user;
-      // ...
+      return user;
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
+      console.error("Error registering user:", error);
+      throw error; // Propagate the error for the caller to handle
+    });
+}
+
+export function loginUser(email, password, remember) {
+  const auth = getAuth();
+
+  const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
+
+  return setPersistence(auth, persistence)
+    .then(() => {
+      return signInWithEmailAndPassword(auth, email, password);
+    })
+    .then((userCredential) => {
+      const user = userCredential.user;
+      return user; 
+    })
+    .catch((error) => {
+      console.error("Error logging in user:", error);
+      throw error;
     });
 }
 
 
-export function loginUser(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
+export function logoutUser() {
+  return signOut(auth)
+    .then(() => {
+      console.log("User signed out");
     })
     .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+      console.error("Error logging out user:", error);
+      throw error; // Propagate the error for the caller to handle
+    });
 }

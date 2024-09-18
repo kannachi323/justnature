@@ -1,6 +1,27 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from './components/Layout'; // Import the Layout component
-import { ContactPage, GalleryPage, HomePage, ShopPage, LoginButton } from './pages';
+import { ContactPage, GalleryPage, HomePage, ShopPage, LoginPage, RegisterPage, UserPage } from './pages'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { NavBar } from './components/NavBar'; 
+import { LogoNoText } from './components/Logos';
+
+function Layout() {
+  return (
+      <>
+          {/* Container for Logo and NavBar */}
+          <div className="h-[9vh] w-full flex flex-row items-center justify-between bg-[#ffffff]">
+              <LogoNoText args="h-full w-[20%]"/>
+              <NavBar />
+          </div>
+          
+          {/* Main content area */}
+          <main className="w-screen h-screen">
+              <Outlet />
+          </main>
+      </>
+  );
+};
+
 
 const Router = createBrowserRouter([
   {
@@ -25,7 +46,15 @@ const Router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginButton />,
+        element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "user",
+        element: <UserPage />,
       }
     ],
   },

@@ -2,6 +2,7 @@ import ContactPage from './ContactPage';
 import GalleryPage from './GalleryPage';
 import HomePage from './HomePage';
 import ShopPage from './ShopPage';
-import {LoginButton, LogoutButton} from './AuthPage';
+import { LoginPage, RegisterPage } from './AuthPage';
+import UserPage from './UserPage';
 
-export { ContactPage, GalleryPage, HomePage, ShopPage, LoginButton, LogoutButton };
+export { ContactPage, GalleryPage, HomePage, ShopPage, LoginPage, RegisterPage, UserPage };
