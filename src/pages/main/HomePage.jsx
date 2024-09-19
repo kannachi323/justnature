@@ -1,14 +1,14 @@
 import React from 'react';
-import ContentCard from '../components/Contents.jsx';
-import { Logo } from '../components/Logos';
+import ContentCard from 'components/Contents.jsx';
+import { Logo } from 'components/Logos';
 import {
   bg1,
   IMG_4777,
   IMG_5493,
   IMG_6856,
   IMG_6906,
-} from '../images';
-import FadeSlideInSection from '../components/FadeSlideInSection';
+} from 'images';
+import FadeSlideInSection from 'components/FadeSlideInSection';
 
 export default function HomePage() {
   return (

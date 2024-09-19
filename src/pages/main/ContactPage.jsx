@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { LogoNoText } from '../components/Logos';
+import { LogoNoText } from 'components/Logos';
 import { GrLocation } from "react-icons/gr";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";
-import FadeSlideInSection from "../components/FadeSlideInSection";
+import FadeSlideInSection from "components/FadeSlideInSection";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function ContactPage() {

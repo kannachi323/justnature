@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { LogoNoText } from '../components/Logos';
-import ProductCard from '../components/Products';
-import FadeSlideInSection from '../components/FadeSlideInSection';
+import { LogoNoText } from 'components/Logos';
+import ProductCard from 'components/Products';
+import FadeSlideInSection from 'components/FadeSlideInSection';
 import {
     orchids
-} from '../images';
+} from 'images';
 
 export default function ShopPage() {
 

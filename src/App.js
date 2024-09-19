@@ -1,11 +1,17 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { ContactPage, GalleryPage, HomePage, ShopPage, LoginPage, RegisterPage, UserPage } from './pages'
-import React from 'react';
+import { createBrowserRouter, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { NavBar } from './components/NavBar'; 
 import { LogoNoText } from './components/Logos';
+import ROUTES from './pages';
 
 function App() {
+  //todo: perform maintenance tasks, get database connection, etc.
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate('/main/home');
+  }, []);
+
   return (
       <>
           {/* Container for Logo and NavBar */}
@@ -23,41 +29,12 @@ function App() {
 };
 
 
-const Router = createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App/>, // Use the Layout component
-    children: [
-      {
-        index: true, // Default route for '/'
-        element: <HomePage />,
-      },
-      {
-        path: "gallery",
-        element: <GalleryPage />,
-      },
-      {
-        path: "contact",
-        element: <ContactPage />,
-      },
-      {
-        path: "shop",
-        element: <ShopPage />,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "register",
-        element: <RegisterPage />,
-      },
-      {
-        path: "user",
-        element: <UserPage />,
-      }
-    ],
-  },
+    path: '/',
+    element: <App />,
+    children: ROUTES
+  }
 ]);
 
-export default Router;
+export default router;

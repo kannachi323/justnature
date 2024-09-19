@@ -6,16 +6,16 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [user, setUser] = useState(null); // To hold the user object if needed
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                console.log("user exists");
-                setUser(user.displayName); // Set the user state when authenticated
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+            if (currentUser) {
+                await currentUser.reload();
+                setUser(currentUser); // Set the updated user object
                 setIsAuthenticated(true); // Mark the user as authenticated
             } else {
-                setUser(null); // Clear user state when signed out
+                setUser(null); // Clear the user state
                 setIsAuthenticated(false); // Mark as unauthenticated
             }
         });
@@ -23,8 +23,9 @@ export const AuthProvider = ({ children }) => {
         // Clean up the listener when the component unmounts
         return () => unsubscribe();
     }, []);
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user }}>
             {children}
         </AuthContext.Provider>
     );

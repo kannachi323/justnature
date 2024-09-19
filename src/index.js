@@ -2,15 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider } from 'react-router-dom';
-import Router from './App';
+import router from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './contexts/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <AuthProvider>
-        <RouterProvider router={Router} />
-  
+        <RouterProvider router={router} />
     </AuthProvider>
     
 );
