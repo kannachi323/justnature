@@ -9,7 +9,7 @@ function App() {
   //todo: perform maintenance tasks, get database connection, etc.
   const navigate = useNavigate();
   useEffect(() => {
-    navigate('/main/home');
+    
   }, []);
 
   return (

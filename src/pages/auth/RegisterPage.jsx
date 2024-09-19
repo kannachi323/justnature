@@ -4,7 +4,7 @@ import { LogoNoText } from "../../components/Logos";
 import FadeSlideInSection from "../../components/FadeSlideInSection";
 import { SuccessPopup, ErrorPopup } from "../../components/Popups";
 import { AuthContext } from '../../contexts/AuthContext';
-import { loginUser, registerUser } from '../../firebase/auth';
+import { loginUser, registerUser } from '../../utils/firebase/auth';
 
 
 
@@ -12,8 +12,6 @@ export default function RegisterPage() {
   const navigate = useNavigate();
   const [termsVisible, setTermsVisible] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(true);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [showError, setShowError] = useState(false);
 
   function checkPasswordMatch() {
     setPasswordMatch(document.getElementById("user-password").value === document.getElementById("confirm-password").value);
@@ -28,16 +26,17 @@ export default function RegisterPage() {
     const username = document.getElementById("user-name").value;
     
     if (!passwordMatch) {
-      setShowError(true);
+      return;
+    }
+
+    else if (!document.getElementById("terms").checked) {
       return;
     }
     
     try {
       await registerUser(email, password, username);
-      setShowSuccess(true);
       navigate('/login');
     } catch (error) {
-      setShowError(true);
     }
   }
 
@@ -65,11 +64,6 @@ export default function RegisterPage() {
             />
 
             {!passwordMatch && <p className="text-red-500 text-sm">Passwords do not match</p>}
-            
-            <div className="flex items-center my-2">
-              <input type="checkbox" id="remember-me" className="mr-2 accent-red-500" />
-              <label htmlFor="remember-me">Remember me</label>
-            </div>
             
             <div className="flex items-center my-2">
               <input type="checkbox" id="terms" className="mr-2" />

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LogoNoText } from "../../components/Logos";
-import FadeSlideInSection from "../../components/FadeSlideInSection";
-import { AuthContext } from '../../contexts/AuthContext';
-import { loginUser } from '../../firebase/auth';
+import { LogoNoText } from "components/Logos";
+import FadeSlideInSection from "components/FadeSlideInSection";
+import { AuthContext } from 'contexts/AuthContext';
+import { loginUser } from 'utils/firebase/auth';
 
 export default function LoginPage() {
     const [showSuccess, setShowSuccess] = useState(false);

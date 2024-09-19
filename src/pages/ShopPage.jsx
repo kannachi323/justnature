@@ -5,59 +5,60 @@ import FadeSlideInSection from 'components/FadeSlideInSection';
 import {
     orchids
 } from 'images';
+import { set } from 'idb-keyval';
 
 export default function ShopPage() {
 
-  const [sliderText, setSliderText] = useState(50);
+  const [sliderValue, setSliderValue] = useState(300);
   const [inStockSelected, setInStockSelected] = useState(false);
 
   const products = [
     {
       imgSrc: orchids, // Replace with the actual path or import
       name: "Elegant Orchid Arrangement",
-      price: "$120.00",
+      price: 80,
       description: "A beautifully arranged selection of our finest orchids.",
       inStock: true
     },
     {
       imgSrc: orchids, // Replace with the actual path or import
       name: "Premium Orchid Collection",
-      price: "$150.00",
+      price: 150,
       description: "A premium selection of our most vibrant orchids.",
       inStock: true
     },
     {
       imgSrc: orchids, // Replace with the actual path or import
       name: "Luxury Orchid Basket",
-      price: "$200.00",
+      price: 200,
       description: "A luxurious basket filled with the best orchids.",
       inStock: false
     },
     {
       imgSrc: orchids, // Replace with the actual path or import
       name: "Orchid Bloom Set",
-      price: "$180.00",
+      price: 180,
       description: "A set of orchids in full bloom, perfect for any occasion.",
       inStock: true
     },
     {
       imgSrc: orchids, // Replace with the actual path or import
       name: "Orchid Bloom Set",
-      price: "$180.00",
+      price: 180,
       description: "A set of orchids in full bloom, perfect for any occasion.",
       inStock: true
     },
     {
       imgSrc: orchids, // Replace with the actual path or import
       name: "Orchid Bloom Set",
-      price: "$180.00",
+      price: 180,
       description: "A set of orchids in full bloom, perfect for any occasion.",
       inStock: true
     },
     {
       imgSrc: orchids, // Replace with the actual path or import
       name: "Orchid Bloom Set",
-      price: "$180.00",
+      price: 190,
       description: "A set of orchids in full bloom, perfect for any occasion.",
       inStock: true
     }
@@ -71,8 +72,10 @@ export default function ShopPage() {
             <h2 className="text-2xl font-semibold mb-5">Filters</h2>
             
             <div className="mb-5">
-              <h3 className="text-xl font-semibold">Price  $0 - ${sliderText}</h3>
-              <input type="range" min="0" max="300" className="w-full p-0 accent-[#ac9d92]" onClick={(e) => setSliderText(e.target.value)}/> 
+              <h3 className="text-xl font-semibold">Price  $0 - ${sliderValue}</h3>
+              <input id="price-slider" type="range" min="0" max="300" className="w-full p-0 accent-[#ac9d92]" defaultValue="300"
+                onChange={(event) => setSliderValue(event.target.value)} 
+              /> 
             
               <div className="flex justify-between">
                 <span>$0</span>
@@ -115,7 +118,7 @@ export default function ShopPage() {
             <b>Shop Our Collection</b>
           </FadeSlideInSection>
           
-          <ProductList inStockSelected={inStockSelected} products={products} />
+          <ProductList inStockSelected={inStockSelected} products={products} sliderValue={sliderValue} />
         </div>
       </div>
     </>
@@ -123,15 +126,19 @@ export default function ShopPage() {
 }
 
 
-function ProductList({ inStockSelected, products }) {
-  const filteredProducts = inStockSelected
-    ? products.filter(product => product.inStock)
-    : products;
+function ProductList({ inStockSelected, products, sliderValue }) {
+  console.log(sliderValue);
+  console.log(products[0].price);
+  const filteredProducts = products.filter(product => {
+    const meetsPriceCriteria = product.price <= sliderValue;
+    const meetsStockCriteria = inStockSelected ? product.inStock : true; // If not selected, include all
+    return meetsPriceCriteria && meetsStockCriteria;
+  });
   
   return (
-    <div className="flex flex-wrap justify-start mt-10">
+    <div className="flex flex-wrap items-start justify-evenly mt-10">
       {filteredProducts.map((product, index) => (
-        <div key={index} className="w-1/4 p-2 box-border">
+        <div key={index} className="p-2 box-border">
           <FadeSlideInSection>
             <ProductCard
               imgSrc={product.imgSrc}
@@ -145,3 +152,5 @@ function ProductList({ inStockSelected, products }) {
     </div>
   );
 }
+
+
