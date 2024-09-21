@@ -24,11 +24,11 @@ export default function ContactPage() {
                         <ul className="flex flex-col text-[#ccab8f] mt-5">
                             <li className="flex flex-row items-center justify-start mb-5">
                                 <GrLocation className="text-[#ccab8f] text-3xl mr-3" />
-                                <a target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/i6xyPuQfLktDwMVZ7">107 E Huntington Dr. Arcadia CA, 91006</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/i6xyPuQfLktDwMVZ7" className="hover:underline">107 E Huntington Dr. Arcadia CA, 91006</a>
                             </li>
                             <li className="flex flex-row items-center justify-start mb-5">
                                 <AiOutlineMail className="text-3xl text-[#ccab8f] mr-3" />
-                                <p>justnatureusa@gmail.com</p>
+                                <p className="hover:underline">justnatureusa@gmail.com</p>
                             </li>  
                             <li className="flex flex-row items-center justify-start mb-5">
                                 <FiPhone className="text-3xl text-[#ccab8f] mr-3" />
@@ -62,9 +62,7 @@ export default function ContactPage() {
                               Click here to access our appointment form and schedule a visit.
                               <FaExternalLinkAlt className="text-[#ccab8f] text-center ml-1">Link</FaExternalLinkAlt>
                             </a>
-                        </p>
-                        
-                    
+                        </p> 
                 </div>
             </FadeSlideInSection>
             

@@ -1,67 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LogoNoText } from 'components/Logos';
-import ProductCard from 'components/Products';
 import FadeSlideInSection from 'components/FadeSlideInSection';
+import { createCart, addItemToCart, updateItemInCart, removeItemFromCart, getItemFromCart } from 'utils/shop_utils/functions';
 import {
     orchids
 } from 'images';
-import { set } from 'idb-keyval';
 
 export default function ShopPage() {
+  const [filterConfig, setFilterConfig] = useState({
+    maxPrice: 300,
+    inStockSelected: false,
+  })
 
-  const [sliderValue, setSliderValue] = useState(300);
-  const [inStockSelected, setInStockSelected] = useState(false);
+  useEffect(() => {
+    createCart();
+  }, []);
+
+  
 
   const products = [
     {
-      imgSrc: orchids, // Replace with the actual path or import
+      productId: 1,
+      imgSrc: orchids, 
       name: "Elegant Orchid Arrangement",
       price: 80,
       description: "A beautifully arranged selection of our finest orchids.",
-      inStock: true
+      inStock: true,
     },
     {
-      imgSrc: orchids, // Replace with the actual path or import
+      productId: 2,
+      imgSrc: orchids, 
       name: "Premium Orchid Collection",
       price: 150,
       description: "A premium selection of our most vibrant orchids.",
-      inStock: true
+      inStock: true,
     },
     {
-      imgSrc: orchids, // Replace with the actual path or import
+      productId: 3,
+      imgSrc: orchids, 
       name: "Luxury Orchid Basket",
       price: 200,
       description: "A luxurious basket filled with the best orchids.",
-      inStock: false
+      inStock: false,
     },
     {
-      imgSrc: orchids, // Replace with the actual path or import
+      productId: 4,
+      imgSrc: orchids, 
       name: "Orchid Bloom Set",
       price: 180,
       description: "A set of orchids in full bloom, perfect for any occasion.",
-      inStock: true
+      inStock: true,
     },
     {
-      imgSrc: orchids, // Replace with the actual path or import
+      productId: 5,
+      imgSrc: orchids, 
       name: "Orchid Bloom Set",
       price: 180,
       description: "A set of orchids in full bloom, perfect for any occasion.",
-      inStock: true
+      inStock: true,
     },
-    {
-      imgSrc: orchids, // Replace with the actual path or import
-      name: "Orchid Bloom Set",
-      price: 180,
-      description: "A set of orchids in full bloom, perfect for any occasion.",
-      inStock: true
-    },
-    {
-      imgSrc: orchids, // Replace with the actual path or import
-      name: "Orchid Bloom Set",
-      price: 190,
-      description: "A set of orchids in full bloom, perfect for any occasion.",
-      inStock: true
-    }
   ];
 
   return (
@@ -72,11 +70,10 @@ export default function ShopPage() {
             <h2 className="text-2xl font-semibold mb-5">Filters</h2>
             
             <div className="mb-5">
-              <h3 className="text-xl font-semibold">Price  $0 - ${sliderValue}</h3>
-              <input id="price-slider" type="range" min="0" max="300" className="w-full p-0 accent-[#ac9d92]" defaultValue="300"
-                onChange={(event) => setSliderValue(event.target.value)} 
+              <h3 className="text-xl font-semibold">Price  $0 - ${filterConfig.maxPrice}</h3>
+              <input id="price-slider" type="range" min="0" max="300" className="w-full p-0 accent-[#ac9d92]" value={filterConfig.maxPrice}
+                onChange={(event) => setFilterConfig({...filterConfig, maxPrice: event.target.value})}
               /> 
-            
               <div className="flex justify-between">
                 <span>$0</span>
                 <span>$300</span>
@@ -86,24 +83,8 @@ export default function ShopPage() {
             <div className="mb-5">
               <h3 className="text-xl font-semibold">In Stock</h3>
               <label className="block mt-2">
-                <input type="checkbox" className="mr-2" onClick={() => setInStockSelected(!inStockSelected)}/>
+                <input type="checkbox" className="mr-2" onClick={() => setFilterConfig({...filterConfig, inStockSelected: !filterConfig.inStockSelected})}/>
                 Only show in-stock items
-              </label>
-            </div>
-
-            <div className="mb-5">
-              <h3 className="text-xl font-semibold">Object Type</h3>
-              <label className="block mt-2">
-                <input type="checkbox" className="mr-2" />
-                Orchids
-              </label>
-              <label className="block mt-2">
-                <input type="checkbox" className="mr-2" />
-                Plants
-              </label>
-              <label className="block mt-2">
-                <input type="checkbox" className="mr-2" />
-                Pots
               </label>
             </div>
           </div>
@@ -118,20 +99,20 @@ export default function ShopPage() {
             <b>Shop Our Collection</b>
           </FadeSlideInSection>
           
-          <ProductList inStockSelected={inStockSelected} products={products} sliderValue={sliderValue} />
+          <ProductList products={products} filterConfig={filterConfig} />
         </div>
       </div>
     </>
   );
 }
 
+function ProductList({ products, filterConfig }) {
 
-function ProductList({ inStockSelected, products, sliderValue }) {
-  console.log(sliderValue);
-  console.log(products[0].price);
+  const navigate = useNavigate();
+
   const filteredProducts = products.filter(product => {
-    const meetsPriceCriteria = product.price <= sliderValue;
-    const meetsStockCriteria = inStockSelected ? product.inStock : true; // If not selected, include all
+    const meetsPriceCriteria = product.price <= filterConfig.maxPrice;
+    const meetsStockCriteria = filterConfig.inStockSelected ? product.inStock : true; 
     return meetsPriceCriteria && meetsStockCriteria;
   });
   
@@ -140,12 +121,17 @@ function ProductList({ inStockSelected, products, sliderValue }) {
       {filteredProducts.map((product, index) => (
         <div key={index} className="p-2 box-border">
           <FadeSlideInSection>
-            <ProductCard
-              imgSrc={product.imgSrc}
-              name={product.name}
-              price={product.price}
-              description={product.description}
-            />
+            <div className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden m-5">
+              <img className="w-full h-48 object-cover" src={product.imgSrc} alt={product.name} />
+              <div className="p-5">
+                <h3 className="text-xl font-semibold text-gray-800">{product.name}</h3>
+                <p className="mt-2 text-gray-600">{product.description}</p>
+                <div className="flex justify-between items-center mt-5">
+                  <span className="text-gray-800 font-bold">${product.price}</span>
+                  <CartContainer product={product}/>
+                </div>
+              </div>
+            </div>
           </FadeSlideInSection>
         </div>
       ))}
@@ -153,4 +139,65 @@ function ProductList({ inStockSelected, products, sliderValue }) {
   );
 }
 
+function CartContainer({ product }) {
+  const [cartList, setCartList] = useState([]);
 
+  // Load cart from localStorage when the component mounts
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartList(cart);
+  }, []);
+
+  const itemInCart = cartList.find(item => item.productId === product.productId);
+
+  const handleAddToCart = () => {
+    let updatedCart;
+    if (itemInCart) {
+      const updatedItem = { ...itemInCart, quantity: itemInCart.quantity + 1 };
+      updateItemInCart(updatedItem); // Update in local storage
+      updatedCart = cartList.map(item =>
+        item.productId === product.productId ? updatedItem : item
+      );
+    } else {
+      const newItem = { ...product, quantity: 1 };
+      addItemToCart(newItem); // Add to local storage
+      updatedCart = [...cartList, newItem];
+    }
+    setCartList(updatedCart); // Update state
+  };
+
+  const handleRemoveFromCart = () => {
+    if (itemInCart && itemInCart.quantity > 1) {
+      const updatedItem = { ...itemInCart, quantity: itemInCart.quantity - 1 };
+      updateItemInCart(updatedItem); // Update in local storage
+      const updatedCart = cartList.map(item =>
+        item.productId === product.productId ? updatedItem : item
+      );
+      setCartList(updatedCart); // Update state
+    } else {
+      removeItemFromCart(product.productId); // Remove from local storage
+      const updatedCart = cartList.filter(item => item.productId !== product.productId);
+      setCartList(updatedCart); // Update state
+    }
+  };
+
+  return (
+    <div>
+      {itemInCart ? (
+        <div className="flex items-center">
+          <button className="px-2 py-1 bg-[#ac9d92] text-white text-xs font-bold rounded transition" onClick={handleRemoveFromCart}>
+            -
+          </button>
+          <span className="px-2">{itemInCart.quantity}</span>
+          <button className="px-2 py-1 bg-[#c2a388] text-white text-xs font-bold rounded transition" onClick={handleAddToCart}>
+            +
+          </button>
+        </div>
+      ) : (
+        <button className="px-3 py-1 bg-[#c2a388] hover:bg-[#e3bd9e] text-white text-xs font-bold uppercase rounded transition duration-300 ease-in-out" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
+      )}
+    </div>
+  );
+}

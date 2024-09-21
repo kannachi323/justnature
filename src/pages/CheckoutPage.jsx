@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FadeSlideInSection from 'components/FadeSlideInSection';
-import ProductCard from 'components/Products'; // Assuming ProductCard component is reused
 //import { calculateTotal } from 'utils/cartUtils'; // Utility function to calculate the total cost
 
 export default function CheckoutPage() {
-  const [cart, setCart] = useState([
-    // Sample cart items; replace with actual cart state or props
-    { imgSrc: 'path_to_image', name: 'Product 1', price: 100, quantity: 1 },
-    { imgSrc: 'path_to_image', name: 'Product 2', price: 150, quantity: 2 },
-  ]);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
   const [shippingDetails, setShippingDetails] = useState({
     name: '',

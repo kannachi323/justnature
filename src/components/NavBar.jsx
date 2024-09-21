@@ -5,7 +5,7 @@ import { MdLogin } from "react-icons/md";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { CgProfile } from "react-icons/cg";
 import { AuthContext } from '../contexts/AuthContext';
-import { logoutUser } from 'utils/firebase/auth';
+import { logoutUser } from 'utils/firebase_utils/auth';
 import { CiDark } from "react-icons/ci";
 import { CiLight } from "react-icons/ci";
 
@@ -15,7 +15,7 @@ export function NavBar() {
     const navigate = useNavigate();
     const { isAuthenticated } = useContext(AuthContext);
     const [isProfileHovered, setIsProfileHovered] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(true); //should get from user prefs
+    const itemCount = 0;
 
     const pages = [
         { name: "Home", link: "/" },
@@ -44,7 +44,7 @@ export function NavBar() {
 
 
     return (
-        <div className="flex flex-row justify-center items-center text-[#ccac91] text-md px-5">
+        <div className="flex flex-row justify-center items-center text-[#ccac91] text-lg px-5">
             {pages.map((page, index) => (
                 <button
                     key={index}
@@ -56,9 +56,13 @@ export function NavBar() {
                     <b>{page.name}</b>
                 </button>
             ))}
-            <AiOutlineShoppingCart className="text-3xl m-5 hover:text-[#8d745e] rounded-full cursor-pointer" 
+            <button className="text-2xl m-3 py-1 px-2 flex flex-row justify-center items-center hover:bg-[#f2ebe5] rounded-md"
               onClick={() => navigate("/checkout")}
-            />
+            >
+              <AiOutlineShoppingCart />
+              <b className="text-lg ml-1">Cart {itemCount} </b>
+            </button>
+        
             {!isAuthenticated ? (
               <>
                <button className="m-3 py-1 px-2 flex flex-row justify-center items-center hover:bg-[#f2ebe5] border-2 rounded-md 
@@ -88,7 +92,7 @@ export function NavBar() {
 
             )}
             { isProfileHovered &&
-              <div className="absolute flex flex-col items-start justify-center left-[88vw] top-[6vh] w-48 bg-white border-[#8d745e] border-2 rounded-lg shadow-lg p-4"
+              <div className="absolute flex flex-col items-start justify-center left-[88vw] top-[6vh] w-48 bg-white border-[#8d745e] border-2 rounded-lg shadow-lg p-4 z-[99]"
                 onMouseEnter={() => setIsProfileHovered(true)} 
                 onMouseLeave={() => setIsProfileHovered(false)}
                 >

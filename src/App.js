@@ -3,15 +3,13 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { NavBar } from './components/NavBar'; 
 import { LogoNoText } from './components/Logos';
+import { createCart } from 'utils/shop_utils/functions';
 import ROUTES from './pages';
 
 function App() {
   //todo: perform maintenance tasks, get database connection, etc.
   const navigate = useNavigate();
-  useEffect(() => {
-    
-  }, []);
-
+  
   return (
       <>
           {/* Container for Logo and NavBar */}
@@ -21,7 +19,7 @@ function App() {
           </div>
           
           {/* Main content area */}
-          <main className="w-screen h-screen">
+          <main className="w-full">
               <Outlet />
           </main>
       </>

@@ -4,7 +4,7 @@ import { LogoNoText } from "../../components/Logos";
 import FadeSlideInSection from "../../components/FadeSlideInSection";
 import { SuccessPopup, ErrorPopup } from "../../components/Popups";
 import { AuthContext } from '../../contexts/AuthContext';
-import { loginUser, registerUser } from '../../utils/firebase/auth';
+import { loginUser, registerUser } from '../../utils/firebase_utils/auth';
 
 
 
